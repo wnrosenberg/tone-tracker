@@ -1,4 +1,9 @@
 <?
+
+error_reporting(E_ALL);
+
+
+
 function isset_notempty(&$var) {
 	return (isset($var) && !empty($var));
 }
@@ -28,50 +33,101 @@ function math_get_frequency_from_note($note) {
 	}
 
 	$note_info = normalize_note($note_info);
-
 	list($letter, $modifier, $octave) = $note_info;
 
 	// How far away from A-4 is $note?
 	if ($octave = 4) {
-		// 
+		// same octave!
 	}
 	
+	// The steps for our util below.
+	$steps = array("C-" , "C#" , "D-" , "D#" , "E-" , "F-" , "F#" , "G-" , "G#" , "A-" , "A#" , "B-");
+
+	$n = 0; // number of steps.
+
+
+
 	// how does this note data compare with A-4?
 	if ($note_octave >=4) { // UP
 		// how many octaves up is it?
 		$octaves_up = $note_octave - 4;
 		// how many notes away from A is it?
-		$notes_up   = 
+		$notes_up   = util_get_num_steps($letter.$modifier, "A-", $steps, 'up');
+		$n = $octaves_up * 12 + $notes_up;
 	} else { // DOWN
 		// how many octaves down is it?
 		$octaves_dn = 4 - $note_octave;
+		// how many notes away from A is it?
+		$notes_dn   = util_get_num_steps($letter.$modifier, "A-", $steps, 'down');
+		$n = ($octaves_dn * 12 + $notes_dn) * -1;
 	}
 
 	// How many notes away from A-4 is this note?
-	$freq = (440 * 2^(n/12));
+	$freq = 440.0 * pow( 2 , $n / 12 );
+
+	return $freq;
 }
 
-//////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////
+// Find $needle in array $haystack, starting with value $start, 
+// moving in $direction ('up'/1 or 'down'/-1), and optionally, 
+// of $type (which may cause some particular behavior in the future).
+// Return values include: false (error), 0 to sizeof($haystack)-1.
+// If $type != false, 
+function util_get_num_steps($needle, $start, $haystack, $direction, $type=false) {
 
-$the_notes = array('A-4','Bb3','F#5','H-2','B-9','B#3','E#5','Cb4','Fb3');
-$new_notes = array();
+	// dim a var to hold our count
+	$count = 0;
 
-//////////////////////////////////////////////////////////////
-
-echo "ORIGINAL NOTES: " . implode(", ", $the_notes) . "\n";
-foreach ($the_notes as $the_note) {
-	// Is this note valid?
-	if (is_note_valid($the_note,$note_info)) {
-		$new_notes[] = implode("",normalize_note($note_info));
-	} else {
-		$new_notes[] = "---";
+	// start with some validation:
+	if (!is_array($haystack) || !in_array($start, $haystack) || !in_array($needle, $haystack)) {
+		// failed basic validation :(
+		return false;
+	} else if ($needle == $start) {
+		// its the same! posititon = 0
+		return $count;
+	} else if (!in_array($direction,array('up',1,'down',-1))) {
+		// invalid direction value :(
+		return false;
 	}
-}
-echo "THE NEW NOTES: " . implode(", ", $new_notes) . "\n";
 
-//////////////////////////////////////////////////////////////
+	// set $direction to an integer
+	$direction = -1;
+	if (in_array($direction, array('up',1)) {
+		$direction = 1;
+	}
+
+	// time to count!  first reset $haystack's keys
+	$haystack = array_values($haystack);
+
+	// then get the index of $start in $haystack
+	$current_pos = array_search($start);
+
+	// find $needle, counting how long it takes.
+	while($haystack[$current_pos] != $needle) {
+		if ($count == sizeof($haystack) + 1) {
+			// it wasn't found :(
+			return false;
+		}
+		// ok, so $haystack[$current_pos] != $needle. cool. increase by one in the $direction 
+		$current_pos = $current_pos + $direction;
+
+		// but what if $current_pos is now outside the bounds of the array?
+		if ($current_pos < 0) {
+			// too low!
+			$current_pos = sizeof($haystack)-1;
+		} else if ($current_pos == sizeof($haystack)) {
+			// too high, man!
+			$current_pos = 0;
+		}
+
+		// and lastly update $count
+		$count++;
+
+	}
+
+	// At last, return the count!
+	return $count;
+}
 
 function is_note_valid($note, &$note_matches=false) {
 	preg_match('/([A-G]{1})([-#b]{1})([0-8]{1})/i', $note, $note_matches);
@@ -140,27 +196,25 @@ function normalize_note($note_info) {
 
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////
 
+// $the_notes = array('A-4','Bb3','F#5','H-2','B-9','B#3','E#5','Cb4','Fb3');
+// $new_notes = array();
 
-<?
-/**
- * steps_between_notes calculates steps between two notes
- * @param $noteone # array of ($letter, $modifier, $octave)
- * @param $noteone # array of ($letter, $modifier, $octave)
- * If the params are passed as strings, return false and RTFM.
- * @todo accept string representation and convert to array.
- */
-function steps_between_notes($noteone, $notetwo) {
-	if (!is_array($noteone) || !is_array($notetwo)) {
-		return false;
-	}
+// //////////////////////////////////////////////////////////////
 
-	$one = $noteone[0].$noteone[1];
-	$two = $notetwo[0].$notetwo[1];
+// echo "ORIGINAL NOTES: " . implode(", ", $the_notes) . "\n";
+// foreach ($the_notes as $the_note) {
+// 	// Is this note valid?
+// 	if (is_note_valid($the_note,$note_info)) {
+// 		$new_notes[] = implode("",normalize_note($note_info));
+// 	} else {
+// 		$new_notes[] = "---";
+// 	}
+// }
+// echo "THE NEW NOTES: " . implode(", ", $new_notes) . "\n";
 
-	
+// //////////////////////////////////////////////////////////////
 
-
-//////////////////////////////
 
 /* */ // end of file
