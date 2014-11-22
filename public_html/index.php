@@ -1,5 +1,4 @@
 <?php
-	include("functions.php");
 	$page_title = "";
 	include("header.php");
 ?>

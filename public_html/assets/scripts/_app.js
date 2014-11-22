@@ -107,3 +107,22 @@ function basico_ui_init() {
 
 
 }
+
+// ------- HELPER FUNCTIONS ---------
+
+function math_get_frequency_from_note(note) {
+	// is the note in separate vars?
+	if ($octave !== false) {
+		// $note   = "[A-G]{1}[-#]{1}?"
+		// $octave = "[0-8]{1}"
+	} else {
+		// $note   = "[A-G]{1}[-#]{1}[0-8]{1}"
+	}
+	// How many notes away from A-4 is this note?
+	$freq = (440 * 2^(n/12));
+}
+
+
+
+
+

@@ -16,4 +16,151 @@ $key_frequencies = array(
 	"C-8" => 4186.01 , "C#8" => 4434.92 , "D-8" => 4698.63 , "D#8" => 4978.03 , "E-8" => 5274.04 , "F-8" => 5587.65 , "F#8" => 5919.91 , "G-8" => 6271.93 , "G#8" => 6644.88 , "A-8" => 7040.00 , "A#8" => 7458.62 , "B-8" => 7902.13
 );
 
+
+
+function math_get_frequency_from_note($note) {
+	if (is_array($note)) {
+		$note_info = $note;
+	} else {
+		if(!is_note_valid($note,$note_info)) {
+			return false;
+		}
+	}
+
+	$note_info = normalize_note($note_info);
+
+	list($letter, $modifier, $octave) = $note_info;
+
+	// How far away from A-4 is $note?
+	if ($octave = 4) {
+		// 
+	}
+	
+	// how does this note data compare with A-4?
+	if ($note_octave >=4) { // UP
+		// how many octaves up is it?
+		$octaves_up = $note_octave - 4;
+		// how many notes away from A is it?
+		$notes_up   = 
+	} else { // DOWN
+		// how many octaves down is it?
+		$octaves_dn = 4 - $note_octave;
+	}
+
+	// How many notes away from A-4 is this note?
+	$freq = (440 * 2^(n/12));
+}
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+$the_notes = array('A-4','Bb3','F#5','H-2','B-9','B#3','E#5','Cb4','Fb3');
+$new_notes = array();
+
+//////////////////////////////////////////////////////////////
+
+echo "ORIGINAL NOTES: " . implode(", ", $the_notes) . "\n";
+foreach ($the_notes as $the_note) {
+	// Is this note valid?
+	if (is_note_valid($the_note,$note_info)) {
+		$new_notes[] = implode("",normalize_note($note_info));
+	} else {
+		$new_notes[] = "---";
+	}
+}
+echo "THE NEW NOTES: " . implode(", ", $new_notes) . "\n";
+
+//////////////////////////////////////////////////////////////
+
+function is_note_valid($note, &$note_matches=false) {
+	preg_match('/([A-G]{1})([-#b]{1})([0-8]{1})/i', $note, $note_matches);
+	if (sizeof($note_matches) == 4) {
+		// pop the first match off the array.
+		array_shift($note_matches);
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function get_note_parts($note) {
+	preg_match('/([A-G]{1})([-#b]{1})([0-8]{1})/i', $note, $note_matches);
+	if (sizeof($note_matches) == 4) {
+		// pop the first match off the array.
+		array_shift($note_matches);
+		return $note_matches;
+	} else {
+		return false;
+	}
+}
+
+
+function normalize_note($note_info) {
+	
+	if (sizeof($note_info == 3)) {
+		// goggles fit perfectly
+	} else if (sizeof($note_info == 4)) {
+		// remove the first element.
+		array_shift($note_info);
+	} else {
+		// invalid $note_info
+		return false;
+	}
+	list($letter, $modifier, $octave) = $note_info;
+	
+	$map = array(
+		// Convert Flats to Sharps/Naturals
+		'Ab' => array( 'letter' => 'G', 'modifier' => '#', 'octave' => -1 ),
+		'Bb' => array( 'letter' => 'A', 'modifier' => '#', 'octave' => 0  ),
+		'Cb' => array( 'letter' => 'B', 'modifier' => '-', 'octave' => 0  ),
+		'Db' => array( 'letter' => 'C', 'modifier' => '#', 'octave' => 0  ),
+		'Eb' => array( 'letter' => 'D', 'modifier' => '#', 'octave' => 0  ),
+		'Fb' => array( 'letter' => 'E', 'modifier' => '-', 'octave' => 0  ),
+		'Gb' => array( 'letter' => 'F', 'modifier' => '#', 'octave' => 0  ),
+		
+		// Convert Sharps to Naturals
+		'B#' => array( 'letter' => 'C', 'modifier' => '-', 'octave' => 0  ),
+		'E#' => array( 'letter' => 'F', 'modifier' => '-', 'octave' => 0  ),
+	);
+	
+	if (in_array($letter.$modifier,array_keys($map))) {
+		$new_letter   = $map[$letter.$modifier]['letter'];
+		$new_modifier = $map[$letter.$modifier]['modifier'];
+		$new_octave   = $octave + $map[$letter.$modifier]['octave'];
+		if ($new_octave < 0) $new_octave = 0; // otherwise Ab0 => G#-1 (invalid)
+	} else {
+		$new_letter   = $letter;
+		$new_modifier = $modifier;
+		$new_octave   = $octave;
+	}
+	
+	return array($new_letter, $new_modifier, $new_octave);
+}
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+
+<?
+/**
+ * steps_between_notes calculates steps between two notes
+ * @param $noteone # array of ($letter, $modifier, $octave)
+ * @param $noteone # array of ($letter, $modifier, $octave)
+ * If the params are passed as strings, return false and RTFM.
+ * @todo accept string representation and convert to array.
+ */
+function steps_between_notes($noteone, $notetwo) {
+	if (!is_array($noteone) || !is_array($notetwo)) {
+		return false;
+	}
+
+	$one = $noteone[0].$noteone[1];
+	$two = $notetwo[0].$notetwo[1];
+
+	
+
+
+//////////////////////////////
+
 /* */ // end of file
