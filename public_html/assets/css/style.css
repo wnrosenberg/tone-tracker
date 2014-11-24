@@ -49,6 +49,79 @@ fieldset > fieldset > div { /* component options */
 	margin: 5px;
 	padding: 20px 5px;
 }
+
+/* specific fieldsets: */ 
+#pianokeys {
+	min-height: 100px;
+	padding-top:85px;
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#pianokeys .key {
+	display: inline-block;
+	cursor:pointer;
+	box-sizing:border-box;
+	width: 64px;
+	height: 70px;
+	border-radius:10px;
+	border: 1px solid #666;
+	margin: 4px;
+	float: left;
+	position:relative;
+	background-color: #eee;
+	box-shadow: 1px 1px 3px #999;
+}
+#pianokeys .key:after {
+	content:attr(data-keyboard);
+	position: absolute;
+	right: 10px;
+	bottom: 5px;
+	color: #999;
+}
+#pianokeys .key span {
+	font-size: 22px;
+	font-family: monospace;
+	text-align: center;
+	display: block;
+	margin-top: 10px;
+	color: #333;
+}
+#pianokeys .key.active {
+	border-color: #ccc;
+	background-color: #333;
+	box-shadow: -1px -1px 3px #999;
+	margin: 6px 2px 2px 6px;
+}
+#pianokeys .key.active:after {
+	color: #666;
+}
+#pianokeys .key.active span {
+	color: #ccc;
+}
+#pianokeys .key.invalid {
+	border-color: #600;
+	background-color: #e00;
+	box-shadow: 1px 1px 3px #900;
+	margin: 4px;
+}
+#pianokeys .key.invalid:after {
+	color: #900;
+}
+#pianokeys .key.invalid span {
+	color: #300;
+}
+#pianokeys .key.sharp {
+	margin: -74px 4px 4px -25px;
+}
+#pianokeys .key.sharp.active {
+	margin: -72px 2px 2px -23px;
+}
+
+
 #controls {
 	width: 420px;
 	margin: 0px;

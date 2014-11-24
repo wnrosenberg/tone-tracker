@@ -92,7 +92,7 @@ function util_get_num_steps($needle, $start, $haystack, $direction, $type=false)
 
 	// set $direction to an integer
 	$direction = -1;
-	if (in_array($direction, array('up',1)) {
+	if (in_array($direction, array('up',1))) {
 		$direction = 1;
 	}
 
