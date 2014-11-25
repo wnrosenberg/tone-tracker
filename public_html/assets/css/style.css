@@ -50,8 +50,9 @@ fieldset > fieldset > div { /* component options */
 	padding: 20px 5px;
 }
 
-/* specific fieldsets: */ 
+/* PIANO STYLES */ 
 #pianokeys {
+	min-width:720px;
 	min-height: 100px;
 	padding-top:85px;
 	-webkit-touch-callout: none;
@@ -120,8 +121,13 @@ fieldset > fieldset > div { /* component options */
 #pianokeys .key.sharp.active {
 	margin: -72px 2px 2px -23px;
 }
+#pianokeys .key.ghost {
+	/* for now lets not diplay these ghost keys */
+	display: none;
+	/* but in the future these may be used in conjunction with changing octaves, etc. */
+}
 
-
+/* AUDIO CONTROLS STYLES */
 #controls {
 	width: 420px;
 	margin: 0px;
