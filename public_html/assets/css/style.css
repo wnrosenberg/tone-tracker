@@ -11,11 +11,11 @@ input[type=range] + .range_value {
 	background:#ccc;
 	color:#333;
 }
-fieldset {
+fieldset, #pianokeys {
 	display:block;
 	position: relative;
 	background:#fff;
-	box-shadow: 2px 2px 5px rgba(0,0,0,.3);
+	box-shadow: 1px 2px 10px rgba(0,0,0,.2);
 	margin: 10px 0px;
 	padding: 10px;
 }
@@ -53,6 +53,7 @@ fieldset > fieldset > div { /* component options */
 /* PIANO STYLES */ 
 #pianokeys {
 	min-width:720px;
+	width: 720px;
 	min-height: 100px;
 	padding-top:85px;
 	-webkit-touch-callout: none;
@@ -61,6 +62,22 @@ fieldset > fieldset > div { /* component options */
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+#pianokeys.full {
+	min-width: 1040px;
+	width: 1040px;
+	min-height: 350px;
+}
+#pianokeys .keyrow {
+	margin: 0px;
+	padding: 0px;
+	clear:both;
+}
+#pianokeys.full .keyrow.top {
+	margin-top: -78px;
+}
+#pianokeys.full .keyrow.piano {
+	padding-top: 78px;
 }
 #pianokeys .key {
 	display: inline-block;
@@ -122,10 +139,105 @@ fieldset > fieldset > div { /* component options */
 	margin: -72px 2px 2px -23px;
 }
 #pianokeys .key.ghost {
-	/* for now lets not diplay these ghost keys */
 	display: none;
-	/* but in the future these may be used in conjunction with changing octaves, etc. */
 }
+#pianokeys.full .key.ghost {
+	display: inline-block;
+}
+
+/* Named piano keys */
+#pianokeys .key[data-keyname="tab"] {
+	width: 90px; /* 64px default */
+	margin-left: 4px;
+}
+#pianokeys .key.active[data-keyname="tab"] {
+	margin-left: 6px;
+}
+#pianokeys .key[data-keyname="capslock"] {
+	width: 120px; /* 64px default */
+}
+#pianokeys .key[data-keyname="enter"] {
+	width: 107px;
+}
+#pianokeys .key[data-keyname="bkslash"] {
+	margin-left: -68px;
+}
+#pianokeys .key.active[data-keyname="bkslash"] {
+	margin-left: -66px;
+}
+#pianokeys .key[data-keyname='lshift'] {
+	width: 150px;
+}
+#pianokeys .key[data-keyname='rshift'] {
+	width: 149px;
+}
+#pianokeys .key[data-keyname='delete'] {
+	width: 91px;
+}
+#pianokeys .key[data-keyname='lcmd'],
+#pianokeys .key[data-keyname='rcmd'] {
+	width: 84px;
+}
+#pianokeys .key[data-keyname='space'] {
+	width: 351px;
+}
+#pianokeys .arrows {
+	width: 204px;
+	height: 70px;
+	display: inline-block;
+	clear: both;
+}
+#pianokeys .key.arrow {
+	width: 60px;
+	height: 34px;
+	margin: 2px 4px 4px 4px;
+	float: left;
+}
+#pianokeys .key.arrow[data-keyname="up_arrow"] {
+	margin: 4px 72px 0px;
+}
+/* meta row */
+#pianokeys .keyrow.meta .key {
+	width: 66px;
+	height: 34px;
+}
+#pianokeys .keyrow.meta .key[data-keyname='power'] {
+	width: 65px;
+}
+
+
+
+/* toggle button with indicator light*/
+.tglbtn {
+	display: inline-block;
+	height: 38px;
+	padding: 1px 3px;
+	box-sizing: border-box;
+	border-radius: 19px;
+	background-color: #bbb;
+	box-shadow: 2px 2px 5px #666;
+}
+.tglbtn button {
+	display:inline-block;
+	height: 30px;
+	border: none;
+	background: transparent;
+	outline: none;
+}
+.tglbtn.active button {
+}
+.tglbtn .indicator {
+	display:inline-block;
+	vertical-align: middle;
+	height: 30px;
+	width: 30px;
+	background-color: green;
+	border-radius: 15px;
+}
+.tglbtn.active .indicator {
+	background-color: lime;
+}
+
 
 /* AUDIO CONTROLS STYLES */
 #controls {

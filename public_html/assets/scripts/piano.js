@@ -80,24 +80,55 @@ function osc_piano_init() {
 }
 
 // Draws the face of the key and assigns appropriate classes.
-// Note: argument is a jQuery object.
+// Note: first argument is a jQuery object, second arg is a boolean
+
 function piano_draw_key($key) {
-	// @TODO: validate that it is a jquery object and convert it if necessary.
-	if ($key.data('note').indexOf("#") != -1) {
-		// Raise sharps
-		$key.addClass("sharp");
-	} else {
-		// maybe a sharp is left over from a previous layout.
-		$key.removeClass("sharp");
+	return draw_key($key,true);
+}
+
+function draw_key($key,piano) {
+
+	// @TODO: validate that $key is a jquery object and convert it if necessary.
+
+	// draw keys in the piano rows
+	if ($key.parents(".keyrow.piano").length) {
+
+		// All the keys for both rows are included in this container.
+		// Raise the second row of keys.
+		console.log($key.data('note'));
+		if (
+			// Does the key correspond to a sharp note?
+			(undefined != $key.data('note') && $key.data('note').indexOf("#") != -1)
+			// OR is the key one of the raised ghosts?
+			|| (['Q','R','I'].indexOf($key.data('keyboard')) >= 0)
+			// OR is the key one of the raised metas?
+			|| (['tab','lbrace','rbrace','bkslash'].indexOf($key.data('keyname')) >= 0)
+		) {
+			// Raise the key.
+			$key.addClass("sharp");
+		} else {
+			// maybe a sharp is left over from a previous layout.
+			$key.removeClass("sharp");
+		}
+
+		// Handle invalid non-ghosts.
+		if (undefined != $key.data('note') && $key.data('note').indexOf("9") != -1) {
+			// Invalid octave
+			$key.addClass("invalid");
+		} else {
+			// maybe the octave is shifted down and this key becomes valid again.
+			$key.removeClass("invalid");
+		}
+
+		// Set the span containing the note name.
+		var $span = $key.find("span.note");
+		if ($span.length) {
+			$span.text($key.data("note"));
+		} else {
+			$('<span class="note"></span>').text($key.data("note")).appendTo($key);
+		}
 	}
-	if ($key.data('note').indexOf("9") != -1) {
-		// Invalid octave
-		$key.addClass("invalid");
-	} else {
-		// maybe the octave is shifted down and this key becomes valid again.
-		$key.removeClass("invalid");
-	}
-	$('<span class="note"></span>').text($key.data("note")).appendTo($key);
+	
 	return;
 }
 

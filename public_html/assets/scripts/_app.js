@@ -109,6 +109,29 @@ function basico_ui_init() {
 }
 
 
+
+
+/* Handle Interface Items */
+$(".tglbtn button").click(function(){ // Toggle button
+	var $this = $(this);
+	var $parent = $this.parents(".tglbtn");
+
+console.log("Toggle Button Clicked.");
+console.log($parent);
+
+	var affect_id = "#" + $parent.data("affect-id"); // id of element affected by this button
+	var active_class = $parent.data("active-class"); // class to apply to this element.
+
+console.log("Element ID to be affected: " + affect_id);
+console.log($(affect_id));
+console.log("Class to be applied to the element: " + active_class);
+
+	$parent.toggleClass('active');
+	$(affect_id).toggleClass(active_class);
+
+});
+
+
 /* -------- PHPJS -------- */
 function in_array(needle, haystack, argStrict) {
   //  discuss at: http://phpjs.org/functions/in_array/
