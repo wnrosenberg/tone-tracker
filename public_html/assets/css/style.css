@@ -63,10 +63,17 @@ fieldset > fieldset > div { /* component options */
     -ms-user-select: none;
     user-select: none;
 }
-#pianokeys.full {
+#pianokeys.full,
+#pianokeys.recording {
 	min-width: 1040px;
 	width: 1040px;
 	min-height: 350px;
+}
+#pianokeys.recording {
+	min-width: 1040px;
+	width: 1040px;
+	min-height: 160px;
+	padding-top: 10px
 }
 #pianokeys .keyrow {
 	margin: 0px;
@@ -143,6 +150,16 @@ fieldset > fieldset > div { /* component options */
 }
 #pianokeys.full .key.ghost {
 	display: inline-block;
+}
+#pianokeys.recording .key.ghost {
+	display: inline-block;
+	background-color: #ffffff;
+	border-color: #ccc;
+	box-shadow: 1px 1px 3px #ccc;
+	color: #ccc;
+}
+#pianokeys.recording .key.ghost:after {
+	color: #ccc;
 }
 
 /* Named piano keys */
