@@ -281,3 +281,30 @@ fieldset > fieldset > div { /* component options */
 #controls .range_value {
 	width: 10%;
 }
+
+
+/* individual demos */
+#keypress_action {
+	border: 1px solid #ccc;
+	width: 120px;
+	text-align:center;
+	padding: 10px;
+}
+#keypress_action .message {
+	display:none;
+}
+#keypress_action button {
+	display:block;
+	margin: 0 auto;
+}
+#keypress_action .display {
+	margin: 5px; 
+	border: 1px solid #999;
+	border-radius:10px; 
+}
+#keypress_action .display>div { 
+	display: inline; 
+	padding: 10px; 
+	font-size: 40px; 
+	line-height: 50px;
+}

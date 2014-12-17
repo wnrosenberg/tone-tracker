@@ -116,20 +116,53 @@ $(".tglbtn button").click(function(){ // Toggle button
 	var $this = $(this);
 	var $parent = $this.parents(".tglbtn");
 
-console.log("Toggle Button Clicked.");
-console.log($parent);
+	console.log("Toggle Button Clicked.");
+	console.log($parent);
 
 	var affect_id = "#" + $parent.data("affect-id"); // id of element affected by this button
 	var active_class = $parent.data("active-class"); // class to apply to this element.
 
-console.log("Element ID to be affected: " + affect_id);
-console.log($(affect_id));
-console.log("Class to be applied to the element: " + active_class);
+	console.log("Element ID to be affected: " + affect_id);
+	console.log($(affect_id));
+	console.log("Class to be applied to the element: " + active_class);
 
 	$parent.toggleClass('active');
 	$(affect_id).toggleClass(active_class);
 
 });
+
+if ($("#keypress_action").length) {
+
+	var waiting_for_keypress = false;
+
+	$("#start_waiting").on('click', function() {
+		$(this).hide();
+		$("#keypress_action .message").show();
+		waiting_for_keypress = true;
+	});
+
+	$(document).on('keypress', function(e){
+		// prevent default action on keypress.
+	    if (e.preventDefault) {
+	        e.preventDefault();
+	    } else {
+	        // internet explorer
+	        e.returnValue = false;
+	    }
+
+		console.log("keypress!");console.log(e);
+
+		if (waiting_for_keypress) {
+			$("#keypress_action .display div").text(e.which);
+			$("#keypress_action .message").hide();
+			$("#start_waiting").show();
+			waiting_for_keypress = false;
+		}
+
+		return false;
+	});
+
+}
 
 
 /* -------- PHPJS -------- */
