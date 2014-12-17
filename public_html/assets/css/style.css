@@ -54,7 +54,6 @@ fieldset > fieldset > div { /* component options */
 #pianokeys {
 	min-width:720px;
 	width: 720px;
-	min-height: 100px;
 	padding-top:85px;
 	-webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -68,6 +67,8 @@ fieldset > fieldset > div { /* component options */
 	min-width: 1040px;
 	width: 1040px;
 	min-height: 350px;
+	padding-top:10px;
+	padding-bottom:14px;
 }
 #pianokeys.recording {
 	min-width: 1040px;
@@ -85,6 +86,12 @@ fieldset > fieldset > div { /* component options */
 }
 #pianokeys.full .keyrow.piano {
 	padding-top: 78px;
+}
+#pianokeys .keyrow .arrows{
+	display: none;
+}
+#pianokeys.full .keyrow .arrows{
+	display: inline-block;
 }
 #pianokeys .key {
 	display: inline-block;
