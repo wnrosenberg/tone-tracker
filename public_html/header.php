@@ -8,7 +8,7 @@
 	$page_title = "s";
 } ?>
 	<title>Audio Demo<?=$page_title?></title>
-	<meta charset="utf-8" />
+	<meta charset="utf-16" />
 	<link href="./assets/css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>

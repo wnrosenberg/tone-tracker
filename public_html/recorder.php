@@ -2,7 +2,7 @@
 	$page_title = "Basic Audio Recording with Recorder.js";
 	include("header.php");
 ?>
-	<p>Basic Audio Recording with Recorder.js</p>
+	<p>Basic Audio Recording with Recorder.js and the Keyboard Layout</p>
 
 
 	<div id="pianokeys" class="recording clearfix">

@@ -43,7 +43,7 @@ fieldset > div.buttons button {
 fieldset > div.buttons button + button {
 	margin-right: 0px;
 }
-fieldset > fieldset > div { /* component options */
+fieldset > fieldset.default > div { /* component options */
 	float: right;
 	width: 290px;
 	margin: 5px;
@@ -262,31 +262,130 @@ fieldset > fieldset > div { /* component options */
 	background-color: lime;
 }
 
+#recorder_controls {}
+#recorder_controls .buttons {}
+#recorder_controls .buttons button {
+	background:#999;
+	height: 50px;
+	border-radius: 15px;
+	padding: 10px 30px;
+}
+#recorder_controls .buttons button span {
+	font-size: 30px;
+}
+#record span {
+	color: #c99;
+}
+#record.active {
+	background:#ccc;
+}
+#record.active span {
+	color: #c00;
+}
 
 /* AUDIO CONTROLS STYLES */
-#controls {
+#controls .default {
 	width: 420px;
 	margin: 0px;
 	padding: 0px 15px 5px;
 }
-#controls label,
-#controls label span,
-#controls label input[type=range],
-#controls .range_value {
+#controls .default label,
+#controls .default label span,
+#controls .default label input[type=range],
+#controls .default .range_value {
 	display:inline-block;
 	position:relative;
 }
-#controls label {
+#controls .default label {
 	width: 85%;
 }
-#controls label span {
+#controls .default label span {
 	width: 30%;
 }
-#controls label input[type=range] {
+#controls .default label input[type=range] {
 	width: 65%;
 }
-#controls .range_value {
+#controls .default .range_value {
 	width: 10%;
+}
+
+#osc_waveform {
+	position: relative;
+	clear: both;
+	display: inline-block;
+	height: 244px;
+	padding-right: 20px;
+}
+#osc_waveform div.waveform,
+#osc_waveform div.controls {
+	position: absolute;
+	top:0px;
+}
+
+#osc_waveform div.waveform { 
+	display: inline-block;
+	position: relative;
+	margin: 0px 17px;
+	padding: 0px 0px 0px;
+	/*background: #0FC;*/
+	text-align: center;
+}
+
+
+#osc_waveform figure {
+	float: left;
+	margin: 5px;
+	padding: 5px;
+	width: 80px;
+	height: 80px;
+	border-radius:5px;
+	border: 2px solid #000;
+}
+#osc_waveform figure img {
+	width: 80px;
+	height: 80px;
+}
+
+
+#osc_waveform div.waveform div.waveform_section {
+	display: inline-block;
+	/*border: 1px solid #0FC;*/
+	margin: 0px;
+	padding: 10px 15px;
+	width: 104px;
+	background: #FFF;
+}
+#osc_waveform div.waveform div.waveform_section label {
+	font-size: 1.2em;
+}
+#osc_waveform div.waveform div.waveform_section select {
+	margin: 10px 0;
+}
+#osc_waveform div.controls {
+	top: 100px;
+}
+#osc_waveform div.controls div input {
+	display: block;
+	text-align: center;
+	margin: 5px auto;
+}
+#osc_waveform div.controls div  .range_value {
+	width: 30px;
+}
+
+#osc_waveform div.controls div {
+	display: inline-block;
+	text-align: center;
+}
+#osc_waveform div.controls div.spacer {
+	width: 100px;
+}
+#osc_waveform .controls input[type=range][orient=vertical] {
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+    width: 8px;
+    height: 100px;
+    padding: 0 5px;
 }
 
 
@@ -294,7 +393,7 @@ fieldset > fieldset > div { /* component options */
 #keypress_action {
 	border: 1px solid #ccc;
 	width: 120px;
-	text-align:center;
+	text-align: center;
 	padding: 10px;
 }
 #keypress_action .message {

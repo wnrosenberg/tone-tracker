@@ -116,7 +116,7 @@
 	<fieldset id="controls">
 		<legend>Controls</legend>
 
-		<fieldset>
+		<fieldset class="default">
 			<legend>Master Volume</legend>
 			<figure class="icon">
 				<img src="./assets/images/speaker_icon.png">

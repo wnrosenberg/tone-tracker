@@ -120,13 +120,91 @@
 	<fieldset id="controls">
 		<legend>Controls</legend>
 
-		<fieldset>
+		<fieldset id="osc_waveform">
+			<legend>Oscillator Waveform</legend>
+			<div class="waveform">
+				<div class="waveform_section">
+					<label>Attack<br>
+						<select>
+							<option>Formula</option>
+						</select>
+					</label>
+					<figure class="icon">
+						<img src="http://placehold.it/80x80/&text=FPO">
+					</figure>
+				</div>
+				<div class="waveform_section">
+					<label>Decay<br>
+						<select>
+							<option>Formula</option>
+						</select>
+					</label>
+					<figure class="icon">
+						<img src="http://placehold.it/80x80/&text=FPO">
+					</figure>
+				</div>
+				<div class="waveform_section">
+					<label>Sustain<br>
+						<select>
+							<option>Formula</option>
+						</select>
+					</label>
+					<figure class="icon">
+						<img src="http://placehold.it/80x80/&text=FPO">
+					</figure>
+				</div>
+				<div class="waveform_section">
+					<label>Release<br>
+						<select>
+							<option>Formula</option>
+						</select>
+					</label>
+					<figure class="icon">
+						<img src="http://placehold.it/80x80/&text=FPO">
+					</figure>
+				</div>
+			</div>
+			<div class="controls">
+				<div class="point" data-point-label="start" data-range-start="attack">
+					<input type="range" orient="vertical" value="0.00" min="0.00" max="1.00" step="0.05" />
+					<input type="text" class="range_value" data-round=".01" value="0.00" />
+				</div>
+				<div class="spacer" data-range-label="attack"></div>
+				<div class="point" data-point-label="alpha" data-range-end="attack" data-range-start="decay">
+					<input type="range" orient="vertical" value="0.75" min="0.00" max="1.00" step="0.05" />
+					<input type="text" class="range_value" data-round=".01" value="0.75" />
+				</div>
+				<div class="spacer" data-range-label="decay"></div>
+				<div class="point" data-point-label="beta" data-range-end="decay" data-range-start="sustain">
+					<input type="range" orient="vertical" value="0.75" min="0.00" max="1.00" step="0.05" />
+					<input type="text" class="range_value" data-round=".01" value="0.75" />
+				</div>
+				<div class="spacer" data-range-label="sustain"></div>
+				<div class="point" data-point-label="gamma" data-range-end="sustain" data-range-start="release">
+					<input type="range" orient="vertical" value="0.75" min="0.00" max="1.00" step="0.05" />
+					<input type="text" class="range_value" data-round=".01" value="0.75" />
+				</div>
+				<div class="spacer" data-range-label="release"></div>
+				<div class="point" data-point-label="end" data-range-end="release">
+					<input type="range" orient="vertical" value="0.00" min="0.00" max="1.00" step="0.05" />
+					<input type="text" class="range_value" data-round=".01" value="0.00" />
+				</div>
+			</div>
+		</fieldset>
+
+
+
+		<fieldset class="default">
 			<legend>Master Volume</legend>
 			<figure class="icon">
 				<img src="./assets/images/speaker_icon.png">
 			</figure>
 			<div>
-				<label><span>Volume:</span> <input id="gvol" type="range" value="0.75" min="0.00" max="1.00" step="0.05" /></label><input type="text" class="range_value" data-round=".01" value="0.75" />
+				<label>
+					<span>Volume:</span> 
+					<input id="gvol" type="range" value="0.75" min="0.00" max="1.00" step="0.05" />
+				</label>
+				<input type="text" class="range_value" data-round=".01" value="0.75" />
 			</div>
 		</fieldset>
 		
