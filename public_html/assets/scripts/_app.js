@@ -119,15 +119,43 @@ $(".tglbtn button").click(function(){ // Toggle button
 	console.log("Toggle Button Clicked.");
 	console.log($parent);
 
-	var affect_id = "#" + $parent.data("affect-id"); // id of element affected by this button
-	var active_class = $parent.data("active-class"); // class to apply to this element.
+	// What sort of button is it?
+	if (!$parent.data("affect-id") && $parent.data("callback")) {
+		// Callback!
+		console.log("Triggered js callback.");
 
-	console.log("Element ID to be affected: " + affect_id);
-	console.log($(affect_id));
-	console.log("Class to be applied to the element: " + active_class);
+		var cb = $parent.data("cb-method"); // the func to call
+		var target = $parent.data("cb-target"); // the object to pass as an arg
 
-	$parent.toggleClass('active');
-	$(affect_id).toggleClass(active_class);
+		// callback: "record_keys"
+		// target: "piano"
+
+		// if (an object called target exists) {
+		//     if (a function called callback exists) {
+		//         set target.callback = callback
+		//     }
+		// }
+
+
+	}
+
+	if ($parent.data("affect-id") && !$parent.data("callback")) {
+		// DOM effect
+		console.log("Triggered dom effect.");
+
+		var affect_id = "#" + $parent.data("affect-id"); // id of element affected by this button
+		var active_class = $parent.data("active-class"); // class to apply to this element.
+
+		console.log("Element ID to be affected: " + affect_id);
+		console.log($(affect_id));
+		console.log("Class to be applied to the element: " + active_class);
+
+		$parent.toggleClass('active');
+		$(affect_id).toggleClass(active_class);
+
+	}
+
+	
 
 });
 

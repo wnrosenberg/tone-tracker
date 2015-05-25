@@ -240,6 +240,7 @@ fieldset > fieldset.default > div { /* component options */
 	border-radius: 19px;
 	background-color: #bbb;
 	box-shadow: 2px 2px 5px #666;
+	margin-right: 20px;
 }
 .tglbtn button {
 	display:inline-block;
@@ -261,6 +262,13 @@ fieldset > fieldset.default > div { /* component options */
 .tglbtn.active .indicator {
 	background-color: lime;
 }
+.tglbtn .indicator.record {
+	background-color: darkred;
+}
+.tglbtn.active .indicator.record {
+	background-color: red;
+}
+
 
 #recorder_controls {}
 #recorder_controls .buttons {}

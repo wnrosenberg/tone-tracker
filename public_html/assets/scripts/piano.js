@@ -128,7 +128,11 @@ if ($("#pianokeys").length) {
 			if ($span.length) {
 				$span.text($key.data("note"));
 			} else {
-				$('<span class="note"></span>').text($key.data("note")).appendTo($key);
+				//$('<span class="note"></span>').text($key.data("note")).appendTo($key);
+				// jquery 1.7.1 wants these to be separate calls.
+				var spannote = $('<span class="note"></span>');
+				spannote.text($key.data("note"));
+				spannote.appendTo($key);
 			}
 		}
 		
@@ -165,6 +169,12 @@ if ($("#pianokeys").length) {
 		} else {
 			// goggles
 		}
+
+		// are there any callbacks that need to happen now?
+		if (piano.callback) {
+			call(piano.callback);
+		}
+
 	}
 
 	function piano_note_on(note) {

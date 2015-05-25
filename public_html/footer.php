@@ -6,8 +6,10 @@
 	<!--script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script-->
 	<script type="text/javascript" src="./assets/scripts/jquery.min.js"></script>
 	<? /* 1.7.1 for now */ ?>
-	<script type="text/javascript" src="./assets/scripts/_app.js"></script>
+	<script type="text/javascript" src="./assets/scripts/keyboard_methods.js"></script>
 	<script type="text/javascript" src="./assets/scripts/piano.js"></script>
+	<script type="text/javascript" src="./assets/scripts/_app.js"></script>
+	
 </body>
 </html>
 
