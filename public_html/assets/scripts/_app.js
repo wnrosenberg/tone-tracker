@@ -120,21 +120,24 @@ $(".tglbtn button").click(function(){ // Toggle button
 	console.log($parent);
 
 	// What sort of button is it?
-	if (!$parent.data("affect-id") && $parent.data("callback")) {
+	if (!$parent.data("affect-id") && $parent.data("cb-method")) {
 		// Callback!
 		console.log("Triggered js callback.");
 
 		var cb = $parent.data("cb-method"); // the func to call
 		var target = $parent.data("cb-target"); // the object to pass as an arg
 
-		// callback: "record_keys"
+		// cb:     "record_keys"
 		// target: "piano"
 
+		//if ()
 		// if (an object called target exists) {
-		//     if (a function called callback exists) {
-		//         set target.callback = callback
+		//     if (a function called cb exists) {
+		//         set target.callback = cb
 		//     }
 		// }
+
+
 
 
 	}

@@ -71,7 +71,8 @@
 			<div class="key" data-note="C#5" data-keyboard="O"></div>
 			<div class="key" data-note="D-5" data-keyboard="L"></div>
 			<div class="key" data-note="D#5" data-keyboard="P"></div>
-			<div class="key" data-note="E-5" data-keyname="colon" data-keyboard=":;" data-marker="end"></div>
+			<div class="key" data-note="E-5" data-keyname="colon" data-keyboard=":;"></div>
+			<div class="key" data-note="F-5" data-keyname="quote" data-keyboard="&quot;'" data-marker="end"></div>
 
 			<div class="key ghost meta" data-keyname="lbrace" data-keyboard="{["></div>
 

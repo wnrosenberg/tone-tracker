@@ -4,10 +4,9 @@
 ?>
 	<div class="tglbtn" data-affect-id="pianokeys" data-active-class="full"><button>Toggle Full Keyboard</button><div class="indicator"></div></div>
 
-	<div class="tglbtn" 
-	data-cb-method="record_keys" 
-	data-cb-target="piano"
-	><button>Record</button><div class="indicator record"></div></div>
+	<div class="tglbtn" data-cb-method="record_keys" data-cb-target="piano"><button>Record</button><div class="indicator record"></div></div>
+
+	<div class="tglbtn" data-cb-method="transpose" data-cb-target="piano"><label class="btnlbl">Transpose <button class="rounded" data-transpose="up">+</button><button class="rounded" data-transpose="down">-</button></label></div>
 
 	<div id="pianokeys" class="clearfix">
 
@@ -72,7 +71,8 @@
 			<div class="key" data-note="C#5" data-keyboard="O"></div>
 			<div class="key" data-note="D-5" data-keyboard="L"></div>
 			<div class="key" data-note="D#5" data-keyboard="P"></div>
-			<div class="key" data-note="E-5" data-keyname="colon" data-keyboard=":;" data-marker="end"></div>
+			<div class="key" data-note="E-5" data-keyname="colon" data-keyboard=":;"></div>
+			<div class="key" data-note="F-5" data-keyname="quote" data-keyboard="&quot;'" data-marker="end"></div>
 
 			<div class="key ghost meta" data-keyname="lbrace" data-keyboard="{["></div>
 

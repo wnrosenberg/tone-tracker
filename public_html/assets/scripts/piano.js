@@ -28,7 +28,7 @@ if ($("#pianokeys").length) {
 			68:"[data-keyboard=D]",70:"[data-keyboard=F]",84:"[data-keyboard=T]",71:"[data-keyboard=G]",
 			89:"[data-keyboard=Y]",72:"[data-keyboard=H]",85:"[data-keyboard=U]",74:"[data-keyboard=J]",
 			75:"[data-keyboard=K]",79:"[data-keyboard=O]",76:"[data-keyboard=L]",80:"[data-keyboard=P]",
-			186:"[data-keyname=colon]"
+			186:"[data-keyname=colon]",222:"[data-keyname=quote]"
 			/* Ghost Keys */
 			// ,81:"[data-keyboard=Q]",82:"[data-keyboard=R]",73:"[data-keyboard=I]"
 		},

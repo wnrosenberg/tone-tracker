@@ -52,8 +52,8 @@ fieldset > fieldset.default > div { /* component options */
 
 /* PIANO STYLES */ 
 #pianokeys {
-	min-width:720px;
-	width: 720px;
+	min-width:800px;
+	width: 800px;
 	padding-top:85px;
 	-webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -242,7 +242,7 @@ fieldset > fieldset.default > div { /* component options */
 	box-shadow: 2px 2px 5px #666;
 	margin-right: 20px;
 }
-.tglbtn button {
+.tglbtn button, .tglbtn .btnlbl {
 	display:inline-block;
 	height: 30px;
 	border: none;
