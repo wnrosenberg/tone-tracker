@@ -41,7 +41,7 @@ function math_get_frequency_from_note($note) {
 		// how many octaves up is it?
 		$octaves_up = $note_octave - 4;
 		// how many notes away from A is it?
-		$notes_up   = 
+		//$notes_up   = $
 	} else { // DOWN
 		// how many octaves down is it?
 		$octaves_dn = 4 - $note_octave;
@@ -60,7 +60,7 @@ $new_notes = array();
 
 //////////////////////////////////////////////////////////////
 
-echo "ORIGINAL NOTES: " . implode(", ", $the_notes) . "\n";
+//echo "ORIGINAL NOTES: " . implode(", ", $the_notes) . "\n";
 foreach ($the_notes as $the_note) {
 	// Is this note valid?
 	if (is_note_valid($the_note,$note_info)) {
@@ -69,7 +69,7 @@ foreach ($the_notes as $the_note) {
 		$new_notes[] = "---";
 	}
 }
-echo "THE NEW NOTES: " . implode(", ", $new_notes) . "\n";
+//echo "THE NEW NOTES: " . implode(", ", $new_notes) . "\n";
 
 //////////////////////////////////////////////////////////////
 
@@ -142,7 +142,7 @@ function normalize_note($note_info) {
 //////////////////////////////////////////////////////////////
 
 
-<?
+
 /**
  * steps_between_notes calculates steps between two notes
  * @param $noteone # array of ($letter, $modifier, $octave)
@@ -157,8 +157,7 @@ function steps_between_notes($noteone, $notetwo) {
 
 	$one = $noteone[0].$noteone[1];
 	$two = $notetwo[0].$notetwo[1];
-
-	
+}
 
 
 //////////////////////////////
