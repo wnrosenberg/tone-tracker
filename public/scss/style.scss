@@ -1,0 +1,92 @@
+// Define App Colors
+$bgcolor-default: #fff; // Default
+$color-default: #000; // Default Color
+
+// Row / Column Headings
+$bgcolor-heading: #ccc; // Headings
+
+// Pattern Order Bar
+$bgcolor-selected-pattern: #6af;
+$bgcolor-current-pattern: #038;
+$color-current-pattern: #fff;
+
+// Pattern Editor
+$bgcolor-current-line: #6af;  // Current play position
+$bgcolor-meausure-line: #ddd; // Notate meaure markers
+$bgcolor-quarter-line: #eee;  // Notate beat markers
+$bgcolor-event-line: #ccc;    // When editing an event 
+
+// Continue with SCSS as usual
+* { box-sizing: border-box; }
+.col {
+  display:inline-block;
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px; padding-left: 15px;
+  float: left;
+  &.row-heading, &.col-heading, &.select-all{
+    background-color: $bgcolor-heading;
+    text-align:center;
+    border: 1px outset;
+    cursor: default;
+  }
+  &.row-heading, &.select-all{
+    width: 4%;
+  }
+  &.channel {
+    width: calc(11em * 0.8);
+    padding-left: 0px; padding-right: 0px;
+    &.data{
+      border: 1px solid #eee;  
+      border-top: 0px; border-left: 0px;
+    }
+  }
+  .note, .instrument, .volume, .effect {
+    font-family: monospace;
+    white-space: pre;
+    display:inline-block;
+    width: calc(3em * 0.7);
+  }
+  .instrument { 
+    width: calc(2em * 0.7);
+  }
+}
+.row.highlighted .col.channel {
+  background-color: $bgcolor-current-line;
+}
+.order-container{
+  width: auto;
+  display: inline-block;
+  border: 1px inset;
+  ul {
+    list-style: none;
+    margin: 0px; padding: 0px;
+    display: flex;
+  }
+  li {
+    margin: 0px; padding: 10px 15px;
+    @extend .col.select-all;
+    width: auto;
+    background-color: $bgcolor-default;
+    color: $color-default;
+    &.selected {
+      background-color: $bgcolor-selected-pattern;
+    }
+    &.current {
+      background-color: $bgcolor-current-pattern;
+      color: $color-current-pattern;
+    }
+  }
+}
+.transport-container {
+  background-color: $bgcolor-heading;
+  display: inline-flex;
+  div { display:inline-block; }
+  &>div { padding: 5px 10px; border: 1px inset; }
+  .position { input { width: 3em; } }
+  .status { line-height: 26px; }
+  .controls { line-height: 21px; }
+}
+.transport-container, .order-container, #pattern {
+  margin-bottom: 20px;
+}
