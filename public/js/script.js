@@ -10,6 +10,7 @@ var o = {          // Set some options for our app.
 };
 var cp = 0;        // ID of the current pattern.
 var ticks_per_quarternote = 4;
+var keyboard_mode = "qwerty";
 
 
 
