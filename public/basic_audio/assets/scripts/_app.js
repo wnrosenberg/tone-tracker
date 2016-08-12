@@ -108,21 +108,102 @@ function basico_ui_init() {
 
 }
 
-// ------- HELPER FUNCTIONS ---------
 
-function math_get_frequency_from_note(note) {
-	// is the note in separate vars?
-	if ($octave !== false) {
-		// $note   = "[A-G]{1}[-#]{1}?"
-		// $octave = "[0-8]{1}"
-	} else {
-		// $note   = "[A-G]{1}[-#]{1}[0-8]{1}"
+
+
+/* Handle Interface Items */
+$(".tglbtn button").click(function(){ // Toggle button
+	var $this = $(this);
+	var $parent = $this.parents(".tglbtn");
+
+	console.log("Toggle Button Clicked.");
+	console.log($parent);
+
+	// What sort of button is it?
+	if (!$parent.data("affect-id") && $parent.data("cb-method")) {
+		// Callback!
+		console.log("Triggered js callback.");
+
+		var cb = $parent.data("cb-method"); // the func to call
+		var target = $parent.data("cb-target"); // the object to pass as an arg
+
+		// cb:     "record_keys"
+		// target: "piano"
+
+		//if ()
+		// if (an object called target exists) {
+		//     if (a function called cb exists) {
+		//         set target.callback = cb
+		//     }
+		// }
+
+
+
+
 	}
-	// How many notes away from A-4 is this note?
-	$freq = (440 * 2^(n/12));
+
+	if ($parent.data("affect-id") && !$parent.data("callback")) {
+		// DOM effect
+		console.log("Triggered dom effect.");
+
+		var affect_id = "#" + $parent.data("affect-id"); // id of element affected by this button
+		var active_class = $parent.data("active-class"); // class to apply to this element.
+
+		console.log("Element ID to be affected: " + affect_id);
+		console.log($(affect_id));
+		console.log("Class to be applied to the element: " + active_class);
+
+		$parent.toggleClass('active');
+		$(affect_id).toggleClass(active_class);
+
+	}
+
+	
+
+});
+
+if ($("#keypress_action").length) {
+
+	var waiting_for_keypress = false;
+
+	$("#start_waiting").on('click', function() {
+		$(this).hide();
+		$("#keypress_action .message").show();
+		waiting_for_keypress = true;
+	});
+
+	$(document).on('keypress', function(e){
+		// prevent default action on keypress.
+	    if (e.preventDefault) {
+	        e.preventDefault();
+	    } else {
+	        // internet explorer
+	        e.returnValue = false;
+	    }
+
+		console.log("keypress!");console.log(e);
+
+		if (waiting_for_keypress) {
+			$("#keypress_action .display div").text(e.which);
+			$("#keypress_action .message").hide();
+			$("#start_waiting").show();
+			waiting_for_keypress = false;
+		}
+
+		return false;
+	});
+
 }
 
 
-
-
-
+/* -------- PHPJS -------- */
+function in_array(needle, haystack, argStrict) {
+  //  discuss at: http://phpjs.org/functions/in_array/
+  var key = '', strict = !! argStrict;
+  if (strict) {
+    for (key in haystack){ if (haystack[key] === needle){ return true; }}
+  } else {
+    for (key in haystack){ if (haystack[key] == needle){ return true; }}
+  }
+  return false;
+}

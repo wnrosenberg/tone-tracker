@@ -16,7 +16,7 @@
 		</div>
 
 
-		<fieldset>
+		<fieldset class="default">
 			<legend>Oscillator [SOURCE]</legend>
 			<figure class="icon">
 				<img src="./assets/images/oscillator_icon.png">
@@ -27,7 +27,7 @@
 		</fieldset>
 
 
-		<fieldset>
+		<fieldset class="default">
 			<legend>Gain [EFFECT]</legend>
 			<figure class="icon">
 				<img src="./assets/images/effects_icon.png">
@@ -37,7 +37,7 @@
 			</div>
 		</fieldset>
 
-		<fieldset>
+		<fieldset class="default">
 			<legend>Speakers [DESTINATION]</legend>
 			<figure class="icon">
 				<img src="./assets/images/speaker_icon.png">
