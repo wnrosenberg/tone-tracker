@@ -1,0 +1,74 @@
+* {
+  box-sizing: border-box; }
+
+.col {
+  display: inline-block;
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  float: left; }
+  .col.row-heading, .col.col-heading, .col.select-all, .order-container li {
+    background-color: #ccc;
+    text-align: center;
+    border: 1px outset;
+    cursor: default; }
+  .col.row-heading, .col.select-all, .order-container li {
+    width: 4%; }
+  .col.channel {
+    width: calc(11em * 0.8);
+    padding-left: 0px;
+    padding-right: 0px; }
+    .col.channel.data {
+      border: 1px solid #eee;
+      border-top: 0px;
+      border-left: 0px; }
+  .col .note, .col .instrument, .col .volume, .col .effect {
+    font-family: monospace;
+    white-space: pre;
+    display: inline-block;
+    width: calc(3em * 0.7); }
+  .col .instrument {
+    width: calc(2em * 0.7); }
+
+.row.highlighted .col.channel {
+  background-color: #6af; }
+
+.order-container {
+  width: auto;
+  display: inline-block;
+  border: 1px inset; }
+  .order-container ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    display: flex; }
+  .order-container li {
+    margin: 0px;
+    padding: 10px 15px;
+    width: auto;
+    background-color: #fff;
+    color: #000; }
+    .order-container li.selected {
+      background-color: #6af; }
+    .order-container li.current {
+      background-color: #038;
+      color: #fff; }
+
+.transport-container {
+  background-color: #ccc;
+  display: inline-flex; }
+  .transport-container div {
+    display: inline-block; }
+  .transport-container > div {
+    padding: 5px 10px;
+    border: 1px inset; }
+  .transport-container .position input {
+    width: 3em; }
+  .transport-container .status {
+    line-height: 26px; }
+  .transport-container .controls {
+    line-height: 21px; }
+
+.transport-container, .order-container, #pattern {
+  margin-bottom: 20px; }
